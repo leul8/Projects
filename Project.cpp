@@ -50,9 +50,6 @@ int main()
         changeplayer();
         checkwinner();
     }
-
-
-
 }
 void tictactoeboard()
 {
@@ -69,9 +66,6 @@ void tictactoeboard()
     cout << "                                          | " << num[2][0] << " |  " << num[2][1] << " | " << num[2][2] << " |" << endl;
 
 }
-
-
-
 void check(int num1)
 {
     switch (num1)
@@ -115,8 +109,6 @@ void changeplayer()
     {
         xo = 'X';
     }
-
-   
 }
 
  void checkwinner()
@@ -140,8 +132,8 @@ void changeplayer()
          cout << fplay << " has won!";
          exit(1);
      }
-     
     }
+
 /*cout << endl;
 cout << "                                          | " << num[0][0] << " |  " << num[0][1] << " | " << num[0][2] << " |" << endl;
 cout << "                                          | " << num[1][0] << " |  " << num[1][1] << " | " << num[1][2] << " |" << endl;
