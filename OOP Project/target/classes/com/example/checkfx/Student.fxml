@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -19,15 +22,22 @@
                         <Font size="21.0" />
                      </font>
                   </Text>
-                  <MenuButton fx:id="menu" layoutX="935.0" layoutY="2.0" mnemonicParsing="false" text="Menu">
+                  <MenuButton fx:id="menu" layoutX="935.0" layoutY="2.0" mnemonicParsing="false" text="More">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                        <MenuItem fx:id="Logout" mnemonicParsing="false" onAction="#Logout" text="Log out" />
+                        <MenuItem fx:id="DeleteAccount" mnemonicParsing="false" onAction="#DeleteAccount" text="Delete Account" />
                      </items>
                   </MenuButton>
-                  <Button fx:id="sap" layoutX="479.0" layoutY="241.0" mnemonicParsing="false" text="Submit a Project" />
-                  <Button fx:id="vpp" layoutX="463.0" layoutY="294.0" mnemonicParsing="false" text="View Previous Projects" />
+                  <Button fx:id="sap" layoutX="479.0" layoutY="241.0" mnemonicParsing="false" onAction="#SubmitProjectTitle" text="Submit a Project" />
+                  <Button fx:id="vpp" layoutX="463.0" layoutY="294.0" mnemonicParsing="false" onAction="#ViewPreviousProjects" text="View Previous Projects" />
                   <Button fx:id="spr" layoutX="460.0" layoutY="361.0" mnemonicParsing="false" text="Submit Progress Report" />
+                  <Label fx:id="user" layoutX="14.0" layoutY="6.0" text="User" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="125.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/s.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="yp" layoutX="487.0" layoutY="162.0" mnemonicParsing="false" onAction="#yourprojects" text="Your Projects" />
                </children>
             </AnchorPane>
          </right>

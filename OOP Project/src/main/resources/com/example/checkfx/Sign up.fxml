@@ -28,9 +28,9 @@
    <center>
       <AnchorPane prefHeight="550.0" prefWidth="557.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="suusername" layoutX="202.0" layoutY="355.0" onAction="#signup" promptText="Username" />
-            <PasswordField fx:id="supassword" layoutX="201.0" layoutY="380.0" onAction="#signup" promptText="Password" />
-            <ImageView fitHeight="41.0" fitWidth="55.0" layoutX="250.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="suusername" layoutX="202.0" layoutY="343.0" onAction="#signup" promptText="Username" />
+            <PasswordField fx:id="supassword" layoutX="202.0" layoutY="368.0" onAction="#signup" promptText="Password" />
+            <ImageView fitHeight="41.0" fitWidth="55.0" layoutX="249.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../../../../../Icons/imgonline-com-ua-resize-aPfgpFPAEg0Sr.jpg" />
                </image>
@@ -45,8 +45,9 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <ComboBox fx:id="cmbbx" layoutX="201.0" layoutY="430.0" onAction="#select" prefWidth="150.0" promptText="Select User Type:" />
-            <PasswordField fx:id="cp" layoutX="202.0" layoutY="405.0" onAction="#signup" promptText="Confirm Password" />
+            <ComboBox fx:id="cmbbx" layoutX="201.0" layoutY="418.0" onAction="#select" prefWidth="150.0" promptText="Select User Type:" />
+            <PasswordField fx:id="cp" layoutX="201.0" layoutY="393.0" onAction="#signup" promptText="Confirm Password" />
+            <TextField fx:id="pref" layoutX="201.0" layoutY="443.0" onAction="#signup" promptText="For instructors only" />
          </children>
       </AnchorPane>
    </center>

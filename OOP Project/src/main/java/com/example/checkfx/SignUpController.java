@@ -22,6 +22,8 @@ public class SignUpController implements Initializable {
     @FXML
     private TextField suusername;
     @FXML
+    private TextField pref;
+    @FXML
     private ComboBox<String> cmbbx;
     @FXML
     private PasswordField cp;
@@ -60,10 +62,15 @@ public class SignUpController implements Initializable {
             String password = supassword.getText();
             String confirmpassword = cp.getText();
             String usertype = s;
+            String preference = pref.getText();
             if(password.equals(confirmpassword)){
                 java.sql.Connection con = DriverManager.getConnection(connectURL, sqlUser, sqlPassword);
                 System.out.println("Connected to the database!");
-                PreparedStatement ps = con.prepareStatement("INSERT INTO Logininfo VALUES('" + username + "', '" + password + "', '" + usertype +"')" );
+                PreparedStatement ps = con.prepareStatement("INSERT INTO Logininfo(username,password,usertype,pref) VALUES (?, ?, ?, ?)");
+                ps.setString(1, username);
+                ps.setString(2, password);
+                ps.setString(3, usertype);
+                ps.setString(4, preference);
                 if(ps.executeUpdate() != 0){
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirmation");
@@ -71,14 +78,12 @@ public class SignUpController implements Initializable {
                     alert.showAndWait();
                 }
             }
-                else{
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setContentText("Please check your password!");
-                    alert.showAndWait();
-                }
-
-
+                else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("Please check your password!");
+                alert.showAndWait();
+            }
         }catch(Exception e){
             System.out.println(e);
         }

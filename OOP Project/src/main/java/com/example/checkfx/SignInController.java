@@ -11,6 +11,7 @@ import java.sql.*;
 
 import javafx.stage.Stage;
 
+import static com.example.checkfx.User.rs;
 import static javafx.scene.paint.Color.rgb;
 
 public class SignInController  {
@@ -67,7 +68,35 @@ public class SignInController  {
     }
     @FXML
     void Login(ActionEvent event) {
-            try{
+        User user1 = new User(Username.getText(),Password.getText());
+        if(user1.authenticate(Username.getText(), Password.getText())){
+            try {
+                if (rs.next()) {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmation");
+                    alert.setContentText("Signed in successfully!");
+                    alert.showAndWait();
+                    if (rs.getString(3).equals("Student")) {
+                        Student();
+                    } else if (rs.getString(3).equals("Instructor")) {
+                        Instructor();
+                    } else if (rs.getString(3).equals("Coordinator")) {
+                        Coordinator();
+                    }
+                    System.out.println("Success!");
+                }
+                else{
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setContentText("Wrong username or password. Please try again!");
+                    alert.showAndWait();
+                }
+            }catch(SQLException e){
+                System.out.println(e);
+            }
+        }
+
+            /*try{
                 String hostname = "localhost";
                 String sqlInstanceName = "LEULLOL\\JAVACONNECT";
                 String sqlDatabase = "Login";
@@ -109,7 +138,7 @@ public class SignInController  {
             }
             catch(Exception e){
                 System.out.println(e);
-            }
+            }*/
     }
 
 @FXML
