@@ -3,12 +3,13 @@ import math
 import matplotlib.pyplot as plt
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QTextEdit
+from PyQt5.QtCore import QElapsedTimer
 from collections import Counter
 
 paths = ['1.txt', '2.txt', '3.txt','4.txt', '5.txt', '6.txt','7.txt', '8.txt', '9.txt','10.txt', '11.txt', '12.txt','13.txt', '14.txt']
 texts = []
 for files in paths:
-    with open(files, 'r', encoding='utf-8') as file:
+    with open(files, 'r', encoding ='utf-8') as file:
         text = file.read()
         texts.append(text)
 def tokenizeword(texts):
@@ -24,9 +25,11 @@ def tokenizeword(texts):
 
      return tokenized_words
 
+print(len(tokenizeword(texts)))
+
 def CountFrequencyandrank(tokenized_words):
     Count1 = 0
-    freq = dict()
+    freq = {}
     for word in tokenized_words:
         if word in freq:
             freq[word] = freq[word] + 1
@@ -79,7 +82,7 @@ def luhn_indexing(data):
 
 def stopwords(File):
     indexw = []
-    stopwords1 = open("stopwords-am.txt",encoding='utf-8')
+    stopwords1 = open("stopwords.txt",encoding='utf-8')
     stopwords2 = []
     for line1 in stopwords1:
         for words1 in line1.split():
@@ -93,57 +96,6 @@ def stopwords(File):
 def termfrequency(File):
     tf = Counter(tokenizeword(File))
     return tf
-
-#print(tokenizeword(texts))
-#print(len(tokenizeword(texts)))
-#print(CountFrequencyandrank(tokenizeword(texts)))
-#plottinggraph()
-#print(product())
-#print(find_cutoff_points_and_indexes())
-class InvertedIndexVSM:
-    def __init__(self):
-        self.index = {}
-        self.doc_lengths = {}
-
-    def add_document(self, doc_id, terms):
-        # Update the inverted index
-        for term in terms:
-            if term not in self.index:
-                self.index[term] = {}
-            if doc_id not in self.index[term]:
-                self.index[term][doc_id] = 0
-            self.index[term][doc_id] += 1
-
-        # Update document lengths
-        self.doc_lengths[doc_id] = sum((1 + math.log(tf)) ** 2 for tf in terms.values())
-
-    def search(self, query):
-        query_vector = self._create_query_vector(query)
-        scores = {}
-
-        # Compute cosine similarity between query vector and document vectors
-        for term, query_weight in query_vector.items():
-            if term in self.index:
-                for doc_id, doc_weight in self.index[term].items():
-                    if doc_id not in scores:
-                        scores[doc_id] = 0
-                    scores[doc_id] += query_weight * doc_weight / math.sqrt(self.doc_lengths[doc_id])
-
-        # Sort documents by relevance
-        sorted_docs = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-        return [doc_id for doc_id, _ in sorted_docs]
-
-    def _create_query_vector(self, query):
-        query_terms = Counter(query.split())
-        max_freq = max(query_terms.values())
-        query_vector = {}
-        for term, freq in query_terms.items():
-            query_vector[term] = (1 + math.log(freq)) / max_freq
-        return query_vector
-
-
-index = InvertedIndexVSM()
-
 def normalize(input_token):
     s = " "
     s = s.join(input_token)
@@ -198,38 +150,35 @@ def normalize(input_token):
     rep48 = re.sub('[ኵ]', 'ኩ', rep47)  # ኩ can be also written as ኵ
     normlist = rep48.split()
     return normlist
+
 # Define the suffix and prefix lists
-suffix_list = "ኦችኣችኧውንንኣ|ኦችኣችህኡ|ኦችኣችኧውን|ኣችኧውንንኣ|ኦችኣችኧው|ኢዕኧልኧሽ|ኦችኣችን|ኣውኢው|ኣችኧውኣል|ችኣት|ችኣችህኡ|ችኣችኧው|ኣልኧህኡ|ኣውኦች|ኣልኧህ|ኣልኧሽ|ኣልችህኡ|ኣልኣልኧች|ብኣችኧውስ|ብኣችኧው|ኣችኧውን|ኣልኧች|ኣልኧን|ኣልኣችህኡ|ኣችህኡን|ኣችህኡ|ኣችህኡት|ውኦችንንኣ|ውኦችን|ኣችኧው|ውኦችኡን|ውኦችኡ|ውንኣ|ኦችኡን|ውኦች|ኝኣንኧትም|ኝኣንኣ|ኝኣንኧት|ኝኣን|ኝኣውም|ኝኣው|ኣውኣ|ብኧትን|ኣችህኡም|ችኣችን|ኦችህ|ኦችሽ|ኦችኡ|ኦችኤ|ኦውኣ|ኦቿ|ችው|ችኡ|ኤችኡ|ንኧው|ንኧት|ኣልኡ|ኣችን|ክኡም|ክኡት|ክኧው|ችን|ችም|ችህ|ችሽ|ችን|ችው|ይኡሽን|ይኡሽ|ውኢ|ኦችንንኣ|ኣውኢ|ብኧት|ኦች|ኦችኡ|ውኦን|ኝኣ|ኝኣውን|ኝኣው|ኦችን|ኣል|ም|ሽው|ክም|ኧው|ውኣ|ትም|ውኦ|ውም|ውን|ንም|ሽን|ኣች|ኡት|ኢት|ክኡ|ኤ|ህ|ሽ|ኡ|ሽ|ክ|ች|ኡን|ን|ም|ንኣ"
+suffix_list = (
+    "ኦችኣችኧውንንኣ|ኦችኣችህኡ|ኦችኣችኧውን|ኣችኧውንንኣ|ኦችኣችኧው|ኢዕኧልኧሽ|ኦችኣችን|ኣውኢው|ኣችኧውኣል|ችኣት|ችኣችህኡ|ችኣችኧው|ኣልኧህኡ|ኣውኦች|ኣልኧህ|ኣልኧሽ|ኣልችህኡ|ኣልኣልኧች|ብኣችኧውስ|ብኣችኧው|ኣችኧውን|ኣልኧች|ኣልኧን|ኣልኣችህኡ|ኣችህኡን|ኣችህኡ|ኣችህኡት|ውኦችንንኣ|ውኦችን|ኣችኧው|ውኦችኡን|ውኦችኡ|ውንኣ|ኦችኡን|ውኦች|ኝኣንኧትም|ኝኣንኣ|ኝኣንኧት|ኝኣን|ኝኣውም|ኝኣው|ኣውኣ|ብኧትን|ኣችህኡም|ችኣችን|ኦችህ|ኦችሽ|ኦችኡ|ኦችኤ|ኦውኣ|ኦቿ|ችው|ችኡ|ኤችኡ|ንኧው|ንኧት|ኣልኡ|ኣችን|ክኡም|ክኡት|ክኧው|ችን|ችም|ችህ|ችሽ|ችን|ችው|ይኡሽን|ይኡሽ|ውኢ|ኦችንንኣ|ኣውኢ|ብኧት|ኦች|ኦችኡ|ውኦን|ኝኣ|ኝኣውን|ኝኣው|ኦችን|ኣል|ም|ሽው|ክም|ኧው|ውኣ|ትም|ውኦ|ውም|ውን|ንም|ሽን|ኣች|ኡት|ኢት|ክኡ|ኤ|ህ|ሽ|ኡ|ሽ|ክ|ች|ኡን|ን|ም|ንኣ")
 prefix_list = "ስልኧምኣይ|ይኧምኣት|ዕንድኧ|ይኧትኧ|ብኧምኣ|ብኧትኧ|ዕኧል|ስልኧ|ምኧስ|ዕይኧ|ይኣል|ስኣት|ስኣን|ስኣይ|ስኣል|ይኣስ|ይኧ|ልኧ|ብኧ|ክኧ|እን|አል|አስ|ትኧ|አት|አን|አይ|ይ|አ|እ"
-
-
 def stem1(word):
+
+
     # Prepare suffix array
     sarr = suffix_list.split("|")
-    sfx_arr = [(suffix, " ") for suffix in sarr]
-
+    sfx_arr = [(suffix) for suffix in sarr]
     # Prepare prefix array
     parr = prefix_list.split("|")
-    pfx_arr = [(prefix, " ") for prefix in parr]
-
+    pfx_arr = [(prefix) for prefix in parr]
     # Remove suffixes
     for sfx in sfx_arr:
         if word.endswith(sfx):
             word = word[:-len(sfx)]
             break
-
     # Remove prefixes
     for pfx in pfx_arr:
         if word.startswith(pfx):
             cv_string = word[len(pfx):]
             break
-
     # Remove infixes
     if any(word.endswith(char) for char in ['ሀ', 'ሐ', 'ሠ', 'ሸ', 'ቐ', 'በ', 'ተ', 'ኀ', 'አ', 'ኸ']):
         cv_string = word[:-1]
     elif any(word.endswith(char) for char in ['ነ', 'ገ', 'ጠ', 'ጰ', 'ጸ']):
         word = word[:-2]
-
     return word
 
 def stem2(tokenized_words):
@@ -237,6 +186,63 @@ def stem2(tokenized_words):
     for word in tokenized_words:
         stemmed_words.append(stem1(word))
     return stemmed_words
+#print(tokenizeword(texts))
+#print(len(tokenizeword(texts)))
+#print(CountFrequencyandrank(tokenizeword(texts)))
+#plottinggraph()
+#print(product())
+#print(find_cutoff_points_and_indexes())
+
+class InvertedIndexVSM:
+    def __init__(self):
+        self.index = {}
+        self.doc_lengths = {}
+
+    def add_document(self, doc_id, terms):
+        # Update the inverted index
+        for term in terms:
+            if term not in self.index:
+                self.index[term] = {}
+            if doc_id not in self.index[term]:
+                self.index[term][doc_id] = 0
+            self.index[term][doc_id] += 1
+
+        # Update document lengths using Euclidean norm
+        doc_length = sum(freq ** 2 for freq in terms.values())
+        self.doc_lengths[doc_id] = math.sqrt(doc_length)
+
+    def search(self, query):
+        query_vector = self._create_query_vector(query)
+        query_length = self._compute_query_length(query_vector)
+        scores = {}
+
+        # Compute cosine similarity between query vector and document vectors
+        for term, query_weight in query_vector.items():
+            if term in self.index:
+                for doc_id, doc_weight in self.index[term].items():
+                    if doc_id not in scores:
+                        scores[doc_id] = 0
+                    scores[doc_id] += query_weight * doc_weight / (self.doc_lengths[doc_id] * query_length)
+
+        # Sort documents by relevance
+        sorted_docs = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+
+        return [doc_id for doc_id, _ in sorted_docs]
+
+    def _create_query_vector(self, query):
+        query_terms = Counter(query.split())
+        query_vector = {}
+        for term, freq in query_terms.items():
+            query_vector[term] = freq
+        return query_vector
+
+    def _compute_query_length(self, query_vector):
+        return math.sqrt(sum(weight ** 2 for weight in query_vector.values()))
+
+
+index = InvertedIndexVSM()
+
+
 def preprocessing(num):
     for i in range(1,num + 1):
        File = open(str(i) +".txt",encoding='utf-8')
@@ -250,8 +256,8 @@ def tostring(list):
         w += " "
     return w
 def SearchT(s):
-    if index.search(tostring(tostring(stem2(stopwords(normalize((s.split()))))))):
-        return index.search(tostring(stem2(stopwords(normalize((s.split()))))))
+    if index.search(tostring(tostring(stem2(normalize((s.split())))))):
+        return index.search(tostring(stem2(normalize((s.split())))))
     else:
         return 0
 
@@ -284,11 +290,21 @@ class SearchGUI(QWidget):
         self.result_text.move(20, 90)
         self.result_text.resize(360, 190)
 
+        self.elapsedtime = QLabel("Elapsed Time:        ",self)
+        self.elapsedtime.move(20, 50)
+
     def search(self):
+        timer = QElapsedTimer()
+        timer.start()
         query = self.query_entry.text()
+
         if query:
             results = SearchT(query)
             self.display_results(results)
+            elapsed_time = timer.elapsed() / 1000
+            self.elapsedtime.setText(f"Elapsed Time: {elapsed_time:.2f}")
+
+
 
     def display_results(self, results):
         i = 1
@@ -312,4 +328,5 @@ def main():
     sys.exit(app.exec_())
 
 if __name__ == "__main__":
+    plottinggraph()
     main()
