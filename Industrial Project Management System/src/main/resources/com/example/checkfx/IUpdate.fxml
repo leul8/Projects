@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.checkfx.iuController">
+   <children>
+      <AnchorPane prefHeight="579.0" prefWidth="1065.0" style="-fx-background-color: #33D4FF;">
+         <children>
+            <MenuButton layoutX="936.0" layoutY="2.0" mnemonicParsing="false" text="Menu">
+               <items>
+                  <MenuItem fx:id="lm" mnemonicParsing="false" onAction="#Logout" text="Log out" />
+                  <MenuItem fx:id="bm" mnemonicParsing="false" onAction="#Back" text="Back" />
+               </items>
+            </MenuButton>
+            <Label fx:id="l1" layoutX="49.0" layoutY="46.0" text="Username" />
+            <Label fx:id="up" layoutX="412.0" layoutY="142.0" text="Updates">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="text" layoutX="304.0" layoutY="165.0" prefHeight="254.0" prefWidth="327.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

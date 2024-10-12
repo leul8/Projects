@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.checkfx.InstructorController">
+   <children>
+      <AnchorPane prefHeight="561.0" prefWidth="1025.0" style="-fx-background-color: #33D4FF;">
+         <children>
+            <Button fx:id="eps" layoutX="382.0" layoutY="245.0" mnemonicParsing="false" onAction="#evaluateproject" text="Evaluate Project Submissions" />
+            <Text layoutX="368.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Instructor Dashboard">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <MenuButton layoutX="936.0" layoutY="2.0" mnemonicParsing="false" text="Menu">
+              <items>
+                <MenuItem fx:id="lm" mnemonicParsing="false" onAction="#Logout" text="Log out" />
+                <MenuItem fx:id="sb" mnemonicParsing="false" onAction="#DeleteAccount" text="Delete Account" />
+              </items>
+            </MenuButton>
+            <Button fx:id="r" layoutX="343.0" layoutY="345.0" mnemonicParsing="false" onAction="#submitreview" prefHeight="25.0" prefWidth="258.0" text="Recommend Revisions for Titles" />
+            <Label fx:id="l1" layoutX="68.0" layoutY="83.0" text="Username" />
+            <ImageView fitHeight="172.0" fitWidth="150.0" layoutX="103.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../Icons/t.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="frc" layoutX="382.0" layoutY="170.0" mnemonicParsing="false" onAction="#reviewingcommittee" text="Form ReviewingCommittee" />
+            <Button fx:id="updates" layoutX="135.0" layoutY="376.0" mnemonicParsing="false" onAction="#updates" text="Updates" />
+            <ImageView fitHeight="41.0" fitWidth="42.0" layoutX="60.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../Icons/user.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

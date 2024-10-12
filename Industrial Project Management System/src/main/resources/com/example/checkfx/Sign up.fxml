@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.checkfx.SignUpController">
+   <left>
+      <AnchorPane prefHeight="550.0" prefWidth="449.0" style="-fx-background-color: #33D4FF;" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="95.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO IPMS" wrappingWidth="243.13671875">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="signin" layoutX="179.0" layoutY="484.0" mnemonicParsing="false" onAction="#signin" text="Sign in" />
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="550.0" prefWidth="557.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="suusername" layoutX="202.0" layoutY="343.0" onAction="#signup" promptText="Username" />
+            <PasswordField fx:id="supassword" layoutX="202.0" layoutY="368.0" onAction="#signup" promptText="Password" />
+            <ImageView fitHeight="41.0" fitWidth="55.0" layoutX="249.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../Icons/imgonline-com-ua-resize-aPfgpFPAEg0Sr.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="248.0" fitWidth="250.0" layoutX="152.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../Icons/imgonline-com-ua-resize-qGVoECJeV7.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="signup" layoutX="239.0" layoutY="482.0" mnemonicParsing="false" onAction="#signup" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #33D4FF;" text="Sign up">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </Button>
+            <ComboBox fx:id="cmbbx" layoutX="201.0" layoutY="418.0" onAction="#select" prefWidth="150.0" promptText="Select User Type:" />
+            <PasswordField fx:id="cp" layoutX="201.0" layoutY="393.0" onAction="#signup" promptText="Confirm Password" />
+            <TextField fx:id="pref" layoutX="201.0" layoutY="443.0" onAction="#signup" promptText="For instructors only" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="539.0" prefWidth="1025.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.checkfx.MatchController">
+   <children>
+      <AnchorPane prefHeight="558.0" prefWidth="1035.0" style="-fx-background-color: #33D4FF;">
+         <children>
+            <Text layoutX="374.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Match advisors with students">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <MenuButton layoutX="941.0" layoutY="2.0" mnemonicParsing="false" text="Menu">
+               <items>
+                  <MenuItem fx:id="lm" mnemonicParsing="false" onAction="#Logout" text="Log out" />
+                  <MenuItem fx:id="bm" mnemonicParsing="false" onAction="#Back" text="Back" />
+               </items>
+            </MenuButton>
+            <Label fx:id="l1" layoutX="14.0" layoutY="27.0" text="Username" />
+            <ComboBox fx:id="cmbbx1" layoutX="99.0" layoutY="231.0" prefHeight="124.0" prefWidth="262.0" />
+            <ComboBox fx:id="cmbbx2" layoutX="689.0" layoutY="221.0" prefHeight="135.0" prefWidth="262.0" />
+            <Label fx:id="l3" layoutX="145.0" layoutY="192.0" text="Available student projects">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="l4" layoutX="746.0" layoutY="185.0" text="Available Instructors">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="mb" layoutX="457.0" layoutY="430.0" mnemonicParsing="false" onAction="#match" text="Match" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
