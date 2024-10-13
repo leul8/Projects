@@ -1,0 +1,10 @@
+C:\Users\leul\source\repos\Voting App\Voting App\bin\Debug\Voting App.exe.config
+C:\Users\leul\source\repos\Voting App\Voting App\bin\Debug\Voting App.exe
+C:\Users\leul\source\repos\Voting App\Voting App\bin\Debug\Voting App.pdb
+C:\Users\leul\source\repos\Voting App\Voting App\obj\Debug\Voting App.csproj.AssemblyReference.cache
+C:\Users\leul\source\repos\Voting App\Voting App\obj\Debug\Voting_App.Form1.resources
+C:\Users\leul\source\repos\Voting App\Voting App\obj\Debug\Voting_App.Properties.Resources.resources
+C:\Users\leul\source\repos\Voting App\Voting App\obj\Debug\Voting App.csproj.GenerateResource.cache
+C:\Users\leul\source\repos\Voting App\Voting App\obj\Debug\Voting App.csproj.CoreCompileInputs.cache
+C:\Users\leul\source\repos\Voting App\Voting App\obj\Debug\Voting App.exe
+C:\Users\leul\source\repos\Voting App\Voting App\obj\Debug\Voting App.pdb
