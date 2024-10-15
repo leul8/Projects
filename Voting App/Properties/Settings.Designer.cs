@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Voting_App.Properties
+namespace Vote.Properties
 {
 
 

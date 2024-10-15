@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Voting_App
+namespace Vote
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace Voting_App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Vote());
+            Application.Run(new Form1());
         }
     }
 }
