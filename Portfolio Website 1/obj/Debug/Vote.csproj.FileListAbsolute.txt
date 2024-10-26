@@ -1,0 +1,11 @@
+C:\Users\leul\source\repos\Vote\Vote\bin\Debug\Vote.exe.config
+C:\Users\leul\source\repos\Vote\Vote\bin\Debug\Vote.exe
+C:\Users\leul\source\repos\Vote\Vote\bin\Debug\Vote.pdb
+C:\Users\leul\source\repos\Vote\Vote\obj\Debug\Vote.csproj.AssemblyReference.cache
+C:\Users\leul\source\repos\Vote\Vote\obj\Debug\Vote.Form1.resources
+C:\Users\leul\source\repos\Vote\Vote\obj\Debug\Vote.Form2.resources
+C:\Users\leul\source\repos\Vote\Vote\obj\Debug\Vote.Properties.Resources.resources
+C:\Users\leul\source\repos\Vote\Vote\obj\Debug\Vote.csproj.GenerateResource.cache
+C:\Users\leul\source\repos\Vote\Vote\obj\Debug\Vote.csproj.CoreCompileInputs.cache
+C:\Users\leul\source\repos\Vote\Vote\obj\Debug\Vote.exe
+C:\Users\leul\source\repos\Vote\Vote\obj\Debug\Vote.pdb
